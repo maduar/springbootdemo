@@ -36,10 +36,12 @@ public class CommonHelp {
      * @param colNum 列数
      */
     public static void setDataValidation(String offset,HSSFSheet sheet, int rowNum,int colNum) {
-        DataValidationHelper dvHelper = new HSSFDataValidationHelper(sheet);
+        DataValidationHelper dvHelper = new HSSFDataValidationHelper((HSSFSheet)sheet);
         DataValidation data_validation_list;
+        String temp = offset + (rowNum);
+
         data_validation_list = getDataValidationByFormula(
-            "INDIRECT($" + offset + (rowNum) + ")", rowNum, colNum,dvHelper);
+            "INDIRECT($" + temp + ")", rowNum, colNum,dvHelper);
         sheet.addValidationData(data_validation_list);
     }
 
@@ -56,6 +58,7 @@ public class CommonHelp {
         // 加载下拉列表内容
         // 举例：若formulaString = "INDIRECT($A$2)" 表示规则数据会从名称管理器中获取key与单元格 A2 值相同的数据，
         //如果A2是江苏省，那么此处就是江苏省下的市信息。
+//        DataValidationConstraint dvConstraint = dvHelper.createFormulaListConstraint(formulaString);
         DataValidationConstraint dvConstraint = dvHelper.createFormulaListConstraint(formulaString);
         // 设置数据有效性加载在哪个单元格上。
         // 四个参数分别是：起始行、终止行、起始列、终止列
@@ -67,18 +70,8 @@ public class CommonHelp {
             lastRow, firstCol, lastCol);
         // 数据有效性对象
         // 绑定
-        DataValidation data_validation_list = (HSSFDataValidation) dvHelper.createValidation(dvConstraint, regions);
-        data_validation_list.setEmptyCellAllowed(false);
-        if (data_validation_list instanceof HSSFDataValidation) {
-            data_validation_list.setSuppressDropDownArrow(true);
-            data_validation_list.setShowErrorBox(true);
-        } else {
-            data_validation_list.setSuppressDropDownArrow(false);
-        }
-        // 设置输入信息提示信息
-        data_validation_list.createPromptBox("下拉选择提示", "请使用下拉方式选择合适的值！");
-        // 设置输入错误提示信息
-        //data_validation_list.createErrorBox("选择错误提示", "你输入的值未在备选列表中，请下拉选择合适的值！");
+        DataValidation data_validation_list = new HSSFDataValidation(regions, dvConstraint);
+        data_validation_list.createErrorBox("选择错误提示", "你输入的值未在备选列表中，请下拉选择合适的值！");
         return data_validation_list;
     }
 

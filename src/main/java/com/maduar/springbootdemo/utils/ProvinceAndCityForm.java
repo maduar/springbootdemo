@@ -3,13 +3,13 @@ package com.maduar.springbootdemo.utils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProvinceAndCitySingleton {
+public class ProvinceAndCityForm {
 
     private String[] provinceArr;
     private String[] areaFatherNameArr;
     Map<String,String[]> areaMap;
 
-    public ProvinceAndCitySingleton() {
+    public ProvinceAndCityForm() {
         initProvinceArr();
         initAreaFatherNameArr();
         initAreaMap();

@@ -38,13 +38,13 @@ public class CommonUtils {
         row0.createCell(1).setCellValue("市");
         row0.createCell(2).setCellValue("区");
 
-        ProvinceAndCitySingleton provinceAndCitySingleton = new ProvinceAndCitySingleton();
-        String[] provinceArr = provinceAndCitySingleton.getProvinceArr();
+        ProvinceAndCityForm provinceAndCityForm = new ProvinceAndCityForm();
+        String[] provinceArr = provinceAndCityForm.getProvinceArr();
 
         Sheet hideSheet = book.createSheet("area");
         //这一行作用是将此sheet隐藏，功能未完成时注释此行,可以查看隐藏sheet中信息是否正确
         //book.setSheetHidden(book.getSheetIndex(hideSheet), true);
-        CommonHelp.setData(book, hideSheet, provinceAndCitySingleton);
+        CommonHelp.setData(book, hideSheet, provinceAndCityForm);
 
         CellRangeAddressList provRangeAddressList = new CellRangeAddressList(1, 20, 0, 0);
         CommonHelp.setSheet(sheetPro, provRangeAddressList, provinceArr);

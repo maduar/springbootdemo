@@ -40,8 +40,9 @@ public class CommonHelp {
     public static void setDataValidation(String offset,XSSFSheet sheet, int rowNum,int colNum) {
         XSSFDataValidationHelper dvHelper = new XSSFDataValidationHelper(sheet);
         DataValidation data_validation_list;
-        data_validation_list = getDataValidationByFormula(
-            "INDIRECT($" + offset + (rowNum) + ")", rowNum, colNum,dvHelper);
+        String formula = "INDIRECT($" + offset + (rowNum) + ")";
+        System.out.println(formula);
+        data_validation_list = getDataValidationByFormula(formula, rowNum, colNum,dvHelper);
         sheet.addValidationData(data_validation_list);
     }
 
@@ -120,13 +121,13 @@ public class CommonHelp {
     }
 
 
-    public static void setData(Workbook book, Sheet hideSheet, ProvinceAndCitySingleton provinceAndCitySingleton) {
+    public static void setData(Workbook book, Sheet hideSheet, ProvinceAndCityForm provinceAndCityForm) {
         int rowId = 0;
         // 设置第一行，存省的信息
 
-        String[] provinceArr = provinceAndCitySingleton.getProvinceArr();
-        String[] areaFatherNameArr = provinceAndCitySingleton.getAreaFatherNameArr();
-        Map<String,String[]> areaMap = provinceAndCitySingleton.getAreaMap();
+        String[] provinceArr = provinceAndCityForm.getProvinceArr();
+        String[] areaFatherNameArr = provinceAndCityForm.getAreaFatherNameArr();
+        Map<String,String[]> areaMap = provinceAndCityForm.getAreaMap();
 
         Row provinceRow = hideSheet.createRow(rowId++);
         provinceRow.createCell(0).setCellValue("省列表");

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface UserJPA extends
+public interface UserRepository extends
     JpaRepository<TUser, Long>,
     JpaSpecificationExecutor<TUser>,
     Serializable {

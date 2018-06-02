@@ -2,7 +2,7 @@ package com.maduar.springbootdemo.controller;
 
 
 import com.maduar.springbootdemo.entity.TUser;
-import com.maduar.springbootdemo.mapping.UserJPA;
+import com.maduar.springbootdemo.mapping.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    private UserJPA userJPA;
+    private UserRepository userRepository;
 
     @RequestMapping(value="/list", method = RequestMethod.GET)
     public List<TUser> list() {
-        return userJPA.findAll();
+        return userRepository.findAll();
     }
 
     @RequestMapping(value="/hello", method = RequestMethod.GET)

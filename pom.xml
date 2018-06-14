@@ -6,14 +6,14 @@
 	<groupId>com.maduar</groupId>
 	<artifactId>springbootdemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>springbootdemo</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<!-- springboot版本号 -->
-		<springboot.version>1.5.1.RELEASE</springboot.version>
+		<springboot.version>1.5.9.RELEASE</springboot.version>
 		<!-- junit版本号 -->
 		<junit.version>4.12</junit.version>
 		<poi.version>3.16</poi.version>
@@ -149,14 +149,14 @@
 		</dependency>
 	</dependencies>
 
-	<build>
+  <build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
 
 </project>

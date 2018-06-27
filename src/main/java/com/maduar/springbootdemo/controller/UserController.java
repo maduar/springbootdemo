@@ -26,6 +26,6 @@ public class UserController {
     @GetMapping(value="/hello/{custId}/")
     public String sayHello(@PathVariable("custId") String custId) {
         System.out.println("custId: " + custId);
-        return "hello24" + custId;
+        return "hellodev: " + custId;
     }
 }

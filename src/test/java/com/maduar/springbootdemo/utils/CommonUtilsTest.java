@@ -1,17 +1,9 @@
 package com.maduar.springbootdemo.utils;
 
 import com.maduar.springbootdemo.entity.ProvinceAndCityForMappingForm;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.junit.Test;
+
+import java.util.*;
 
 public class CommonUtilsTest {
 

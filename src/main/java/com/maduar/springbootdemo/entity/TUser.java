@@ -11,18 +11,18 @@ import javax.persistence.Table;
 @Table(name = "t_user", schema = "test", catalog = "")
 public class TUser {
 
-    private int tId;
+    private Integer tId;
     private String tName;
     private Integer tAge;
     private String tAddress;
 
     @Id
     @Column(name = "t_id", nullable = false)
-    public int gettId() {
+    public Integer gettId() {
         return tId;
     }
 
-    public void settId(int tId) {
+    public void settId(Integer tId) {
         this.tId = tId;
     }
 

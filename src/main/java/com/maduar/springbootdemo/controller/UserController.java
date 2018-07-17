@@ -1,9 +1,16 @@
 package com.maduar.springbootdemo.controller;
 
 
+import com.maduar.springbootdemo.entity.KEmail;
+import com.maduar.springbootdemo.entity.Ma;
 import com.maduar.springbootdemo.entity.TUser;
+import com.maduar.springbootdemo.form.KmailPostForm;
+import com.maduar.springbootdemo.mapping.KemailRepository;
 import com.maduar.springbootdemo.mapping.UserRepository;
+import com.maduar.springbootdemo.service.kmail.KEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
@@ -24,6 +31,12 @@ public class UserController {
     @PersistenceContext
     protected EntityManager em;
 
+    @Autowired
+    private KEmailService kEmailService;
+
+    @Autowired
+    private KemailRepository kemailRepository;
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<TUser> list() {
         return userRepository.findAll();
@@ -41,17 +54,11 @@ public class UserController {
     }
 
     @PostMapping(value = "/hello/")
-    public String sayHelloPost() {
-        TUser t = new TUser();
-        t.settId(1);
-        t.settName("1");
-        t.settAge(1);
-        t.settAddress("1");
-
-        List<TUser> tUsers = new ArrayList<TUser>();
-        tUsers.add(t);
-        batchInsert(tUsers);
-        return "hello_post";
+    public HttpEntity<?> sayHelloPost(@RequestBody KmailPostForm kmailPostForm) {
+//        List<KEmail> list = kemailRepository.findAll();
+        Integer tid = kmailPostForm.getKid();
+        List<Ma> list = kEmailService.listMaByKid(tid);
+        return ResponseEntity.ok(list);
     }
 
     @Transactional

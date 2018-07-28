@@ -32,7 +32,4 @@ public interface KemailRepository extends
             " FROM  com.maduar.springbootdemo.entity.TUser AS a, com.maduar.springbootdemo.entity.KEmail AS b WHERE a.tId = b.tId " +
             " AND b.kid = ?1 ")
     List<Ma> listMaByKid(@Param("kid") Integer kid);
-
-
-
 }

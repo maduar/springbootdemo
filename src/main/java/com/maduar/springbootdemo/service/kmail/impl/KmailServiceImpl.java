@@ -3,6 +3,7 @@ package com.maduar.springbootdemo.service.kmail.impl;
 import com.maduar.springbootdemo.entity.Ma;
 import com.maduar.springbootdemo.mapping.KemailRepository;
 import com.maduar.springbootdemo.service.kmail.KEmailService;
+import com.maduar.springbootdemo.utils.TestAOP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -24,12 +25,16 @@ public class KmailServiceImpl implements KEmailService {
     private static final String DEMO_CACHE_NAME = "users";
 
     @Autowired
+    private TestAOP testAOP;
+
+    @Autowired
     private KemailRepository kemailRepository;
 
     @Override
     @Cacheable(value=DEMO_CACHE_NAME,key="'user_'+#kid")
     public List<Ma> listMaByKid(Integer kid) {
         System.out.println("kid not cache");
+        testAOP.perform();
         return kemailRepository.listMaByKid(kid);
     }
 

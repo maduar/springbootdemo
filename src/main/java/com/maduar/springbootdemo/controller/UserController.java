@@ -1,14 +1,17 @@
 package com.maduar.springbootdemo.controller;
 
 
-import com.maduar.springbootdemo.entity.KEmail;
+import com.maduar.springbootdemo.amqp.Sender;
+import com.maduar.springbootdemo.annotation.ApiVersion;
 import com.maduar.springbootdemo.entity.Ma;
 import com.maduar.springbootdemo.entity.TUser;
+import com.maduar.springbootdemo.form.Aliyun;
 import com.maduar.springbootdemo.form.KmailPostForm;
 import com.maduar.springbootdemo.form.validator.KmailPostFormValidator;
 import com.maduar.springbootdemo.mapping.KemailRepository;
 import com.maduar.springbootdemo.mapping.UserRepository;
 import com.maduar.springbootdemo.service.kmail.KEmailService;
+import com.maduar.springbootdemo.utils.TestAOP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
@@ -19,18 +22,21 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/{version}/")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private TestAOP testAOP;
+
+    @Autowired
+    private Aliyun aliyun;
 
     @PersistenceContext
     protected EntityManager em;
@@ -40,6 +46,9 @@ public class UserController {
 
     @Autowired
     private KemailRepository kemailRepository;
+
+    @Autowired
+    private Sender sender;
 
     @Autowired
     private KmailPostFormValidator kmailPostFormValidator;
@@ -54,16 +63,29 @@ public class UserController {
         dataBinder.setValidator(kmailPostFormValidator);
     }
 
-
+    @ApiVersion(99)
     @GetMapping(value = "/hello/{custId}/")
-    public String sayHello(@PathVariable("custId") String custId) {
+    public String sayHello99(@PathVariable("custId") String custId) {
         System.out.println("custId: " + custId);
-        return "hello24" + custId;
+        return "sayHello99: " + custId;
+    }
+
+    @ApiVersion(22)
+    @GetMapping(value = "/hello/{custId}/")
+    public String sayHello22(@PathVariable("custId") String custId) {
+        System.out.println("custId: " + custId);
+        sender.sendMsg(custId);
+        return "sayHello22: " + custId;
     }
 
     @GetMapping(value = "/hello/")
     public HttpEntity<?>  sayHello(HttpServletRequest request) {
         String result = "sayHello";
+        System.out.println(aliyun.getAppKey());
+        System.out.println(aliyun.getAppSecret());
+        System.out.println(aliyun.getBucket());
+        System.out.println(aliyun.getEndPoint());
+        testAOP.perform();
         return ResponseEntity.ok(result);
     }
 
@@ -85,23 +107,4 @@ public class UserController {
         return ResponseEntity.ok(kid);
     }
 
-
-
-    @Transactional
-    public void batchInsert(List list) {
-        for (int i = 0; i < list.size(); i++) {
-
-            em.persist(list.get(i));
-
-            if (i % 20 == 0) {
-
-                em.flush();
-
-                em.clear();
-
-            }
-
-        }
-
-    }
 }

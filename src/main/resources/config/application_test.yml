@@ -1,3 +1,4 @@
+test: test
 hibernate:
     hibernate:
         cache:

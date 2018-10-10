@@ -1,4 +1,4 @@
-package com.maduar.springbootdemo;
+package com.maduar.springbootdemo.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.servlet.HandlerInterceptor;

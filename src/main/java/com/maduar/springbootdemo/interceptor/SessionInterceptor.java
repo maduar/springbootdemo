@@ -1,4 +1,4 @@
-package com.maduar.springbootdemo;
+package com.maduar.springbootdemo.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

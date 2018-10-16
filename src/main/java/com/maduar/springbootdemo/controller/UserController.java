@@ -47,8 +47,8 @@ public class UserController {
     @Autowired
     private KemailRepository kemailRepository;
 
-    @Autowired
-    private Sender sender;
+//    @Autowired
+//    private Sender sender;
 
     @Autowired
     private KmailPostFormValidator kmailPostFormValidator;

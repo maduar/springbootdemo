@@ -1,7 +1,6 @@
 package com.maduar.springbootdemo.reflectASM;
 
 import com.esotericsoftware.reflectasm.MethodAccess;
-import com.maduar.springbootdemo.test.Playload;
 import org.junit.Assert;
 
 /*

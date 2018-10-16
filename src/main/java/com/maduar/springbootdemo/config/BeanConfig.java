@@ -35,7 +35,7 @@ public class BeanConfig {
                 .build();
     }
 
-//    @Bean
+//    @Bean1
 //    CachingConnectionFactory myConnectionFactory() {
 //        CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
 //        connectionFactory.setUsername("guest");

@@ -35,39 +35,39 @@ public class BeanConfig {
                 .build();
     }
 
-    @Bean
-    CachingConnectionFactory myConnectionFactory() {
-        CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-        connectionFactory.setUsername("guest");
-        connectionFactory.setPassword("maduar");
-        connectionFactory.setHost("150.109.49.131");
-        connectionFactory.setPort(5672);
-        connectionFactory.setVirtualHost("/");
-        return connectionFactory;
-    }
-
-    @Bean
-    Exchange myExchange() {
-        return ExchangeBuilder.topicExchange("test.topic").durable().build();
-    }
-
-    @Bean
-    Queue myQueue() {
-        return QueueBuilder.durable("myQueue").build();
-    }
-
-    @Bean
-    public Binding myExchangeBinding(@Qualifier("myExchange") Exchange topicExchange,
-                                     @Qualifier("myQueue") Queue queue) {
-        return BindingBuilder.bind(queue).to(topicExchange).with("test.#").noargs();
-    }
-
-    @Bean
-    public RabbitTemplate myExchangeTemplate(CachingConnectionFactory myConnectionFactory) {
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(myConnectionFactory);
-        rabbitTemplate.setExchange("test.topic");
-        rabbitTemplate.setRoutingKey("test.abc.123");
-        return rabbitTemplate;
-    }
+//    @Bean
+//    CachingConnectionFactory myConnectionFactory() {
+//        CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
+//        connectionFactory.setUsername("guest");
+//        connectionFactory.setPassword("maduar");
+//        connectionFactory.setHost("150.109.49.131");
+//        connectionFactory.setPort(5672);
+//        connectionFactory.setVirtualHost("/");
+//        return connectionFactory;
+//    }
+//
+//    @Bean
+//    Exchange myExchange() {
+//        return ExchangeBuilder.topicExchange("test.topic").durable().build();
+//    }
+//
+//    @Bean
+//    Queue myQueue() {
+//        return QueueBuilder.durable("myQueue").build();
+//    }
+//
+//    @Bean
+//    public Binding myExchangeBinding(@Qualifier("myExchange") Exchange topicExchange,
+//                                     @Qualifier("myQueue") Queue queue) {
+//        return BindingBuilder.bind(queue).to(topicExchange).with("test.#").noargs();
+//    }
+//
+//    @Bean
+//    public RabbitTemplate myExchangeTemplate(CachingConnectionFactory myConnectionFactory) {
+//        RabbitTemplate rabbitTemplate = new RabbitTemplate(myConnectionFactory);
+//        rabbitTemplate.setExchange("test.topic");
+//        rabbitTemplate.setRoutingKey("test.abc.123");
+//        return rabbitTemplate;
+//    }
 
 }

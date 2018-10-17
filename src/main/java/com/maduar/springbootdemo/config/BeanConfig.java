@@ -41,8 +41,7 @@ public class BeanConfig {
     @Bean
     CachingConnectionFactory myConnectionFactory() {
 
-//        String pass = "rabbitMaduar310";
-        String pass = DESUtils.decode(rabbitmqDESPass);
+        String pass = "rabbitMaduar310";
 
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
         connectionFactory.setUsername("guest");

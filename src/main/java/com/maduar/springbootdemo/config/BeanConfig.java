@@ -2,9 +2,6 @@ package com.maduar.springbootdemo.config;
 
 import com.maduar.springbootdemo.enums.ConfigENUMS;
 import com.maduar.springbootdemo.form.Aliyun;
-
-
-import com.maduar.springbootdemo.utils.DESUtils;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

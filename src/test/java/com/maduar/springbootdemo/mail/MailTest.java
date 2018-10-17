@@ -22,16 +22,16 @@ public class MailTest extends BaseSet {
 
     @Test
     public void testMail() {
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        String from = "maduar@163.com";
-        String to = "maduar@163.com";
-
-        message.setFrom(from);
-        message.setTo(to);
-        message.setSubject("主题：简单邮件");
-        message.setText("测试邮件内容");
-
-        javaMailSender.send(message);
+//        SimpleMailMessage message = new SimpleMailMessage();
+//
+//        String from = "maduar@163.com";
+//        String to = "maduar@163.com";
+//
+//        message.setFrom(from);
+//        message.setTo(to);
+//        message.setSubject("主题：简单邮件");
+//        message.setText("测试邮件内容");
+//
+//        javaMailSender.send(message);
     }
 }

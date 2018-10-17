@@ -47,8 +47,8 @@ public class UserController {
     @Autowired
     private KemailRepository kemailRepository;
 
-//    @Autowired
-//    private Sender sender;
+    @Autowired
+    private Sender sender;
 
     @Autowired
     private KmailPostFormValidator kmailPostFormValidator;
@@ -74,7 +74,7 @@ public class UserController {
     @GetMapping(value = "/hello/{custId}/")
     public String sayHello22(@PathVariable("custId") String custId) {
         System.out.println("custId: " + custId);
-//        sender.sendMsg(custId);
+        sender.sendMsg(custId);
         return "sayHello22: " + custId;
     }
 

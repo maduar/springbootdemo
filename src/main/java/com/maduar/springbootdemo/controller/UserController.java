@@ -67,15 +67,19 @@ public class UserController {
     @GetMapping(value = "/hello/{custId}/")
     public String sayHello99(@PathVariable("custId") String custId) {
         System.out.println("custId: " + custId);
-        return "sayHello99: " + custId;
+//        sender.sendMsg(custId);
+        return "sayHello100: " + custId;
     }
 
     @ApiVersion(22)
     @GetMapping(value = "/hello/{custId}/")
-    public String sayHello22(@PathVariable("custId") String custId) {
+    public HttpEntity<String> sayHello22(@PathVariable("custId") String custId) {
         System.out.println("custId: " + custId);
+
         sender.sendMsg(custId);
-        return "sayHello22: " + custId;
+
+        String result = "sayHello22: " + custId;
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping(value = "/hello/")

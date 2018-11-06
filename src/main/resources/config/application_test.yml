@@ -1,0 +1,48 @@
+test: test
+hibernate:
+    hibernate:
+        cache:
+            use_second_level_cache: false
+    jdbc:
+        batch_size: 20
+    order_inserts: true
+    order_updates: true
+public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJtRO9cXK9JZfZDezXPD0p+64W4n665oHx45R5AnlAnWLgCCCqwAVg9BamvAWnUFp5I05o0pPZBKgtxY5cdRWDMCAwEAAQ==
+pwdroot: FFzibqm8ue38HzrKvichy8A00LL8DN1NppdZXCb/G3baMEkdqZ03jfgZazDuCjvTzj7Fm0NGL2pTijMVhxdlIg==
+redis:
+    host: 116.62.143.98
+    password: maduar
+    poolMaxIdle: 3
+    poolMaxTotal: 10
+    poolMaxWait: 3
+    port: 6379
+    timeout: 3
+spring:
+    datasource:
+        connectionProperties: config.decrypt=true;config.decrypt.key=${public-key}
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat,config
+        initialSize: 1
+        maxActive: 2
+        maxOpenPreparedStatements: 20
+        maxWait: 60000
+        minEvictableIdleTimeMillis: 30000
+        minIdle: 1
+        password: ${pwdroot}
+        poolPreparedStatements: true
+        testOnBorrow: false
+        testOnReturn: false
+        testWhileIdle: true
+        timeBetweenEvictionRunsMillis: 60000
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://150.109.49.131:3306/test?useUnicode=true&characterEncoding=utf8
+        username: root
+        validationQuery: SELECT 'x'
+    thymeleaf:
+        cache: false
+        content-type: text/html
+        enable: true
+        encoding: UTF-8
+        model: HTML5
+        prefix: classpath:/templates/
+        suffix: .html

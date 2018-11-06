@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @email maduar@163.com
  *
  * */
-@Component
+//@Component
 @Slf4j
 public class Sender {
 

@@ -36,7 +36,7 @@ public class BeanConfig {
                 .build();
     }
 
-    @Bean
+//    @Bean
     CachingConnectionFactory myConnectionFactory() {
 
 //        String pass = DESUtils.decode(rabbitmqDESPass);

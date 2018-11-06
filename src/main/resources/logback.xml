@@ -16,19 +16,15 @@
     limitations under the License.
 
 -->
-<configuration debug="true">
+<configuration debug="false">
 
+    <property name="appname" value="springbootdemo"/>
 
-    <!-- lobback-spirng.xml加载顺序在application.yml之后，可以使用application.yml的属性 -->
-    <springProperty scope="context" name="LOG_HOME" source="logback_path"/>
-
-    <property name="appname" value="spring.application.name" />
     <contextName>Logback ${appname}</contextName>
+    <property name="LOG_HOME" value="/mnt/vdb1/logs/${appname}"/>
 
-
-    <property name="CHARSET" value="UTF-8" />
-    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n" />
-
+    <property name="CHARSET" value="UTF-8"/>
+    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"/>
     <!-- 控制台輸出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoder默認配置為PartternLayoutEncoder    -->
@@ -37,44 +33,46 @@
             <charset>${CHARSET}</charset>
         </encoder>
     </appender>
+    <!--持續輸出的日誌檔案-->
 
-     <!--持續輸出的日誌檔案-->
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>${LOG_HOME}/${appname}.log</file>
-        <encoder>
-            <pattern>${PATTERN}</pattern>
-            <charset>${CHARSET}</charset>
-        </encoder>
-    </appender>
-
-     <!--按照每天生成日誌文件-->
-    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日誌文件輸出的文件名-->
-            <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/${appname}_daily-%d{yyyy-MM-dd_HH}.log</FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/${appname}.log</FileNamePattern>
             <!--日誌文件保留天數-->
-            <MaxHistory>3</MaxHistory>
+            <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${PATTERN}</pattern>
             <charset>${CHARSET}</charset>
         </encoder>
     </appender>
-
+    <!--按照每天生成日誌文件-->
+    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日誌文件輸出的文件名-->
+            <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/${appname}_daily-%d{yyyy-MM-dd_HH}.log</FileNamePattern>
+            <!--日誌文件保留天數-->
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+    </appender>
     <!-- 系統用每日生成日誌文件 -->
     <appender name="SYSTEMROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日誌文件輸出的文件名-->
             <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/system-%d{yyyy-MM-dd}.log</FileNamePattern>
             <!--日誌文件保留天數-->
-            <MaxHistory>3</MaxHistory>
+            <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${PATTERN}</pattern>
             <charset>${CHARSET}</charset>
         </encoder>
     </appender>
-
     <!-- 超出固定大小後壓縮檔案的日誌 -->
     <appender name="DFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/debug.log</file>
@@ -88,65 +86,29 @@
         </encoder>
     </appender>
     <!--log4jdbc -->
-    
-    <logger name="jdbc.sqltiming" level="info"/>
-    <logger name="com.ibatis" level="info" />
-    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="info" />
-    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="info" />
-    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate"
-        level="info" />
-    <logger name="java.sql.Connection" level="info" />
-    <logger name="java.sql.Statement" level="info" />
-    <logger name="java.sql.PreparedStatement" level="info" />
-    <logger name="java.sql.ResultSet" level="info" />
 
-    <!-- Appender to log to file in a JSON format -->
-    <!--<appender name="logstash" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--<file>${LOG_HOME}/logstash.json</file>-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-            <!--<fileNamePattern>${LOG_HOME}/json/%d{yyyy-MM-dd}.json.%d{yyyy-MM-dd}.gz</fileNamePattern>-->
-            <!--<maxHistory>7</maxHistory>-->
-        <!--</rollingPolicy>-->
-        <!--<encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
-            <!--<providers>-->
-                <!--<timestamp>-->
-                    <!--<timeZone>UTC</timeZone>-->
-                <!--</timestamp>-->
-                <!--<pattern>-->
-                    <!--<pattern>-->
-                        <!--{-->
-                        <!--"severity": "%level",-->
-                        <!--"service": "${springAppName:-}",-->
-                        <!--"trace": "%X{X-B3-TraceId:-}",-->
-                        <!--"span": "%X{X-B3-SpanId:-}",-->
-                        <!--"parent": "%X{X-B3-ParentSpanId:-}",-->
-                        <!--"exportable": "%X{X-Span-Export:-}",-->
-                        <!--"pid": "${PID:-}",-->
-                        <!--"thread": "%thread",-->
-                        <!--"class": "%logger{40}",-->
-                        <!--"rest": "%message"-->
-                        <!--}-->
-                    <!--</pattern>-->
-                <!--</pattern>-->
-            <!--</providers>-->
-        <!--</encoder>-->
-    <!--</appender>-->
-    
-   	<!-- ebiz -->
-    <!--<logger name="com.ebizprise.das.web.service.forecast" level="debug" />-->
-    
-    <logger name="com.piedra.logback" level="info" additivity="false">
-        <appender-ref ref="FILE" />
-    </logger>
+    <logger name="jdbc.sqltiming" level="info"/>
+    <logger name="com.ibatis" level="info"/>
+    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="info"/>
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="info"/>
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate"
+            level="info"/>
+    <logger name="java.sql.Connection" level="info"/>
+    <logger name="java.sql.Statement" level="info"/>
+    <logger name="java.sql.PreparedStatement" level="info"/>
+    <logger name="java.sql.ResultSet" level="info"/>
+
+    <!-- ebiz -->
+    <!--<logger name="com.ebizprise.das.web.service.forecast" level="debug"/>-->
 
     <logger name="system" level="INFO" additivity="false">
-        <appender-ref ref="SYSTEMROLLINGFILE" />
+        <appender-ref ref="SYSTEMROLLINGFILE"/>
     </logger>
 
-    <root level="INFO" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="ROLLINGFILE" />
+    <root level="INFO" additivity="true">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLINGFILE"/>
         <!-- <appender-ref ref="ELK" /> -->
     </root>
-    
+
 </configuration>

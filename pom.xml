@@ -291,11 +291,11 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>nacos-config-spring-boot-starter</artifactId>
-            <version>${nacos-config-spring-boot.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba.boot</groupId>-->
+            <!--<artifactId>nacos-config-spring-boot-starter</artifactId>-->
+            <!--<version>${nacos-config-spring-boot.version}</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 

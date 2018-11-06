@@ -1,6 +1,7 @@
 package com.maduar.springbootdemo.tdd;
 
 import com.maduar.springbootdemo.base.BaseSet;
+import com.maduar.springbootdemo.service.Tdd2TestService;
 import com.maduar.springbootdemo.service.TddTestService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -21,11 +22,23 @@ public class TestDemo extends BaseSet {
     @Autowired
     private TddTestService tddTest;
 
+    @Autowired
+    private Tdd2TestService tdd2TestServer;
+
     @Test
     public void test() {
         String testStr = "OK";
         String result = tddTest.test();
 
         Assert.assertEquals(testStr, result);
+    }
+
+    @Test
+    public void test2() {
+        String str = "OK";
+
+        String result = tdd2TestServer.test();
+
+        Assert.assertEquals(str, result);
     }
 }

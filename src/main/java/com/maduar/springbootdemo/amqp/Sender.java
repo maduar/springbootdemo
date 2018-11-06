@@ -1,5 +1,6 @@
 package com.maduar.springbootdemo.amqp;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
  *
  * */
 @Component
+@Slf4j
 public class Sender {
 
     @Autowired
@@ -19,7 +21,7 @@ public class Sender {
 
     public void sendMsg(String content) {
         rabbitTemplate.convertAndSend(content);
-        System.out.println("发送消息: '" + content + "'");
+        log.info("发送消息: '" + content + "'");
     }
 
 }

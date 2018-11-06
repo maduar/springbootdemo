@@ -2,6 +2,7 @@ package com.maduar.springbootdemo.config;
 
 import com.maduar.springbootdemo.enums.ConfigENUMS;
 import com.maduar.springbootdemo.form.Aliyun;
+import com.maduar.springbootdemo.utils.DESUtils;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -23,7 +24,7 @@ public class BeanConfig {
     @Autowired
     private ConfigENUMS configENUMS;
 
-    private String rabbitmqDESPass = "nOLMcZATlHKbDN62v+4eHw==";
+    private String rabbitmqDESPass = "P0lptuWmEpSUab083RSTIQ==";
 
     @Bean
     public Aliyun aliyun(){
@@ -38,6 +39,7 @@ public class BeanConfig {
     @Bean
     CachingConnectionFactory myConnectionFactory() {
 
+//        String pass = DESUtils.decode(rabbitmqDESPass);
         String pass = "rabbitMaduar310";
 
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();

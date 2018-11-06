@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan
 @EnableCaching
-@NacosPropertySource(dataId = "springbootdemo", autoRefreshed = true)
+@NacosPropertySource(dataId = "cococ", autoRefreshed = true)
 public class App {
 
     public static void main(String[] args) throws Exception{

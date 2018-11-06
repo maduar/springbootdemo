@@ -19,9 +19,9 @@ redis:
     timeout: 3
 spring:
     datasource:
-        connectionProperties: configx.decrypt=true;configx.decrypt.key=${public-key}
+        connectionProperties: com.maduar.springbootdemo.configx.decrypt=true;com.maduar.springbootdemo.configx.decrypt.key=${public-key}
         driver-class-name: com.mysql.jdbc.Driver
-        filters: stat,configx
+        filters: stat,com.maduar.springbootdemo.configx
         initialSize: 1
         maxActive: 2
         maxOpenPreparedStatements: 20

@@ -15,7 +15,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  *
  * */
 @Controller
-@RequestMapping("config")
+@RequestMapping("configx")
 public class ConfigController {
 
     @Value("${useLocalCache:false}")

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @email maduar@163.com
  *
  * */
-//@Component
+@Component
 public class Receiver {
 
     @RabbitListener(queues = "myQueue")

@@ -13,14 +13,12 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan
 @EnableCaching
-//@NacosPropertySource(dataId = "springbootdemo", autoRefreshed = true)
 public class App {
 
     public static void main(String[] args) throws Exception{
         SpringApplication.run(App.class, args);
 
 //        System.setProperty("java.awt.headless", "false");
-//        String urlStr = "http://localhost:1998/@in";
-//        Desktop.getDesktop().browse(new URI(urlStr));
+//        Desktop.getDesktop().browse(new URI("http://127.0.0.1:9090/@in"));
     }
 }

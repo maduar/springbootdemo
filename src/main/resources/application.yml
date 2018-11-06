@@ -33,7 +33,7 @@ spring:
         percentage: 1.0
 logback_path: /Users/maduar/demo/log/${spring.application.name}
 
-#spring.boot.admin.url: http://mgmt:mgmtebiz@localhost:9000
+nacos.config.server-addr: 127.0.0.1:8848
 ##management.security.enabled: false
 
 server:

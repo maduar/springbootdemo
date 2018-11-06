@@ -1,5 +1,6 @@
 package com.maduar.springbootdemo;
 
+import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan
 @EnableCaching
+@NacosPropertySource(dataId = "${spring.application.name}", autoRefreshed = true)
 public class App {
 
     public static void main(String[] args) throws Exception{

@@ -34,6 +34,7 @@ spring:
 logback_path: /Users/maduar/demo/log/${spring.application.name}
 
 nacos.config.server-addr: 127.0.0.1:8848
+useLocalCache: false
 ##management.security.enabled: false
 
 #server:

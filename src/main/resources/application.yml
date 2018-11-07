@@ -9,7 +9,7 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
   application:
-    name: cococ
+    name: mmm
   mail:
     host: smtp.163.com
     username: maduar@163.com

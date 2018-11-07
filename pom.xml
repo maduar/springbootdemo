@@ -13,7 +13,7 @@
 
     <properties>
         <!-- springboot版本号 -->
-        <springboot.version>2.0.5.RELEASE</springboot.version>
+        <springboot.version>1.5.1.RELEASE</springboot.version>
         <!-- junit版本号 -->
         <junit.version>4.12</junit.version>
         <poi.version>3.16</poi.version>

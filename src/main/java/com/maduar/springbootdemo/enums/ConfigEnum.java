@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 @Component
-public class ConfigENUMS {
+public class ConfigEnum {
 
     @Value("${appKey}")
     private String appKey;
@@ -28,5 +28,8 @@ public class ConfigENUMS {
 
     @Value("${endPoint}")
     private String endPoint;
+
+    @Value("${config.rabbitmq.pass}")
+    private String rabbitmqPass;
 
 }

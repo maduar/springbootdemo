@@ -250,12 +250,12 @@
             <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
-        <!--<dependency>-->
-            <!--<groupId>ch.qos.logback</groupId>-->
-            <!--<artifactId>logback-core</artifactId>-->
-            <!--<version>1.2.3</version>-->
-        <!--</dependency>-->
+         <!--https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.2.3</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
         <!--<dependency>-->

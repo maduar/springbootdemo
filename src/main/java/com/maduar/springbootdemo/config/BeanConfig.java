@@ -1,6 +1,6 @@
 package com.maduar.springbootdemo.config;
 
-import com.maduar.springbootdemo.enums.ConfigENUMS;
+import com.maduar.springbootdemo.enums.ConfigEnum;
 import com.maduar.springbootdemo.form.Aliyun;
 import com.maduar.springbootdemo.utils.DESUtils;
 import org.springframework.amqp.core.*;
@@ -22,25 +22,23 @@ import org.springframework.context.annotation.Bean;
 public class BeanConfig {
 
     @Autowired
-    private ConfigENUMS configENUMS;
-
-    private String rabbitmqDESPass = "P0lptuWmEpSUab083RSTIQ==";
+    private ConfigEnum configEnum;
 
     @Bean
     public Aliyun aliyun(){
         return Aliyun.options()
-                .setAppKey(configENUMS.getAppKey())
-                .setAppSecret(configENUMS.getAppSecret())
-                .setBucket(configENUMS.getBucket())
-                .setEndPoint(configENUMS.getEndPoint())
+                .setAppKey(configEnum.getAppKey())
+                .setAppSecret(configEnum.getAppSecret())
+                .setBucket(configEnum.getBucket())
+                .setEndPoint(configEnum.getEndPoint())
                 .build();
     }
 
     @Bean
     CachingConnectionFactory myConnectionFactory() {
 
-//        String pass = DESUtils.decode(rabbitmqDESPass);
-        String pass = "rabbitMaduar310";
+        String pass = DESUtils.decode(configEnum.getRabbitmqPass());
+//        String pass = "rabbitMaduar310";
 
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
         connectionFactory.setUsername("guest");

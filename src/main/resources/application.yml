@@ -52,6 +52,9 @@ info:
 #    description: @project.description@
 #    version: @project.version@
 
+config:
+  rabbitmq:
+    pass: P0lptuWmEpSUab083RSTIQ==
 ---
 spring:
   profiles: dev

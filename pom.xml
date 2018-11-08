@@ -316,6 +316,8 @@
                 <configuration>
                     <fork>true</fork>
                     <mainClass>com.maduar.springbootdemo.App</mainClass>
+                    <!--将原始的包作为install和deploy的对象，而不是包含了依赖的包-->
+                    <attach>false</attach>
                 </configuration>
             </plugin>
 
@@ -323,12 +325,6 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.7</version>
-                <configuration>
-                    <formats>
-                        <format>html</format>
-                        <format>xml</format>
-                    </formats>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

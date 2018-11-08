@@ -21,7 +21,8 @@
     <property name="appname" value="springbootdemo"/>
 
     <contextName>Logback ${appname}</contextName>
-    <property name="LOG_HOME" value="/mnt/vdb1/logs/${appname}"/>
+    <!--<property name="LOG_HOME" value="/mnt/vdb1/logs/${appname}"/>-->
+    <property name="LOG_HOME" value="/opt/logs/${appname}"/>
 
     <property name="CHARSET" value="UTF-8"/>
     <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"/>

@@ -13,7 +13,7 @@
 
     <properties>
         <!-- springboot版本号 -->
-        <springboot.version>1.5.1.RELEASE</springboot.version>
+        <springboot.version>2.0.1.RELEASE</springboot.version>
         <!-- junit版本号 -->
         <junit.version>4.12</junit.version>
         <poi.version>3.16</poi.version>
@@ -319,6 +319,14 @@
                     <!--将原始的包作为install和deploy的对象，而不是包含了依赖的包-->
                     <attach>false</attach>
                 </configuration>
+                <version>1.5.2.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>

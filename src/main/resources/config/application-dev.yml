@@ -7,8 +7,8 @@ hibernate:
         batch_size: 20
     order_inserts: true
     order_updates: true
-public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJtRO9cXK9JZfZDezXPD0p+64W4n665oHx45R5AnlAnWLgCCCqwAVg9BamvAWnUFp5I05o0pPZBKgtxY5cdRWDMCAwEAAQ==
-pwdroot: FFzibqm8ue38HzrKvichy8A00LL8DN1NppdZXCb/G3baMEkdqZ03jfgZazDuCjvTzj7Fm0NGL2pTijMVhxdlIg==
+public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAL42IpEXed0rV3AuMEInmpoyrcDmQRZ2Hy8ZTXLrnROTnv5HCRYRwA6LMTGps2kJyoqBbfLpAA0F/OP6e+qOLX0CAwEAAQ==
+pwdroot: MzuKHFRrLywMwrn+KmhpkOXzIIU4hKEf8pvh4Di8Ff7UMWW11/nVksBzmFjPLSVjzCcnOBNZmrRrWMZA4+pGMA==
 redis:
     host: 116.62.143.98
     password: maduar
@@ -36,7 +36,7 @@ spring:
         testWhileIdle: true
         timeBetweenEvictionRunsMillis: 60000
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://150.109.49.131:3306/test?useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://150.109.49.131:3306/sonar?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
 #        url: jdbc:log4jdbc:mysql://150.109.49.131:3306/test?useUnicode=true&characterEncoding=utf8
         username: root
         validationQuery: SELECT 'x'

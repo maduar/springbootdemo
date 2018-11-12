@@ -52,6 +52,7 @@ info:
 #    description: @project.description@
 #    version: @project.version@
 
+app.localLog.path: /opt/logs
 config:
   rabbitmq:
     pass: P0lptuWmEpSUab083RSTIQ==

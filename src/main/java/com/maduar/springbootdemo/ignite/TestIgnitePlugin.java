@@ -11,12 +11,12 @@ import com.ctrip.framework.cs.ignite.IgnitePlugin;
  * @email maduar@163.com
  *
  * */
-//@Ignite(id="cornerstone.spring.test",auto = true)
-//public class TestIgnitePlugin implements IgnitePlugin{
-//    @Override
-//    public boolean run(IgniteManager.SimpleLogger logger) {
-//
-//        logger.info("only for test");
-//        return true;
-//    }
-//}
+@Ignite(id="cornerstone.spring.test",auto = true)
+public class TestIgnitePlugin implements IgnitePlugin{
+    @Override
+    public boolean run(IgniteManager.SimpleLogger logger) {
+
+        logger.info("only for test");
+        return true;
+    }
+}
